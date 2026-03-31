@@ -5,7 +5,7 @@ import submitResponse from  '@salesforce/apex/InvitationController.submitRespons
 
 export default class InvitationResponse extends LightningElement {
 
-    recordId = 'a0CJ500000Vl2XtMAJ'
+    recordId = '' //a0CJ500000Vl2XtMAJ
     formData = {}
     rsvpDetailsInfo = {}
     rsvpOptions = []
@@ -18,12 +18,12 @@ export default class InvitationResponse extends LightningElement {
     //     ]
     // }
 
-    // connectedCallback(){
-    //     let invitationId = new URL(location.href).searchParams.get('invitationid')
-    //     if(invitationId){
-    //         this.recordId = invitationId
-    //     }
-    // }
+    connectedCallback(){
+        let invitationId = new URL(location.href).searchParams.get('invitationid')
+        if(invitationId){
+            this.recordId = invitationId
+        }
+    }
 
     @wire(getResponsePicklistValues)
     picklistHandler({data, error}){

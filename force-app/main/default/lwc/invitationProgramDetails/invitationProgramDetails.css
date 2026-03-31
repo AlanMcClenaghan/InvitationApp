@@ -1,3 +1,16 @@
+:host{
+    /* --bg-main:#fff;
+    --h1-color:#447663;
+    --h3-color:#54927a;
+    --p1-color:#54927a;
+    --p2-color:#777; */
+    --bg-main:var(--dxp-g-root);
+    --h1-color:var(--dxp-s-text-heading-extra-large-color);
+    --h3-color:var(--dxp-s-text-heading-medium-color);
+    --p1-color:var(--dxp-s-body-text-color);
+    --p2-color:var(--dxp-s-body-small-text-color);
+}
+
 .program_details {
     text-align: center;
     padding: 32px 16px;

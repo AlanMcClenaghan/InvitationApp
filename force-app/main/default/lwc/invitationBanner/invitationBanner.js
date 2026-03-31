@@ -7,12 +7,19 @@ import {loadScript} from 'lightning/platformResourceLoader';
 
 export default class InvitationBanner extends LightningElement {
     // Public properties to be exposed in the Lightning App Builder
-    recordId = 'a0CJ500000Vl2XtMAJ';
+    recordId = ''; //a0CJ500000Vl2XtMAJ
     facebookUrl = '';
     twitterUrl = '';
     instagramUrl = '';
     theme = 'theme1';
     isConfettiLoaded = false;
+
+    connectedCallback(){
+        let invitationId = new URL(location.href).searchParams.get('invitationid')
+        if(invitationId){
+            this.recordId = invitationId
+        }
+    }
 
     // Countdown timer properties
     days = 0;

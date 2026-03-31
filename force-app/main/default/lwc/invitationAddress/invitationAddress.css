@@ -1,3 +1,14 @@
+:host{
+    /* --bg-address:#f7f7f8;
+    --h1-color:#447663;
+    --p1-color:#54927a;
+    --p2-color:#777; */
+    --bg-address:var(--dxp-g-brand-contrast);
+    --h1-color:var(--dxp-s-text-heading-extra-large-color);
+    --p1-color:var(--dxp-s-body-text-color);
+    --p2-color:var(--dxp-s-body-small-text-color);
+}
+
 .address_details {
     background: var(--bg-address);
     text-align: center;

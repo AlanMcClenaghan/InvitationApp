@@ -3,8 +3,15 @@ import getProgramDetailsByInvitationId from '@salesforce/apex/InvitationControll
 
 export default class InvitationProgramDetails extends LightningElement {
 
-    recordId = 'a0CJ500000Vl2XtMAJ'
+    recordId = '' //a0CJ500000Vl2XtMAJ
     programList = []
+
+    connectedCallback(){
+        let invitationId = new URL(location.href).searchParams.get('invitationid')
+        if(invitationId){
+            this.recordId = invitationId
+        }
+    }
 
     @wire(getProgramDetailsByInvitationId, {Id:'$recordId'})
     programDetailsHandler({data, error}){
