@@ -2,6 +2,8 @@
 import { LightningElement, wire} from 'lwc';
 import marriageInvitationAssets from '@salesforce/resourceUrl/marriageInvitationAssets';
 import getInvitationDetailsById from '@salesforce/apex/InvitationController.getInvitationDetailsById';
+import CONFETTI from '@salesforce/resourceUrl/confetti';
+import {loadScript} from 'lightning/platformResourceLoader';
 
 export default class InvitationBanner extends LightningElement {
     // Public properties to be exposed in the Lightning App Builder
@@ -9,7 +11,8 @@ export default class InvitationBanner extends LightningElement {
     facebookUrl = '';
     twitterUrl = '';
     instagramUrl = '';
-    theme = 'theme1'
+    theme = 'theme1';
+    isConfettiLoaded = false;
 
     // Countdown timer properties
     days = 0;
@@ -72,6 +75,19 @@ export default class InvitationBanner extends LightningElement {
                 console.log('Countdown expired!');
             }
         }, 1000);
+    }
+
+        renderedCallback(){
+        if(!this.isConfettiLoaded){
+            loadScript(this, CONFETTI).then(()=>{
+                this.isConfettiLoaded = true
+                console.log("Loaded Successfully")
+                const jsConfetti = new JSConfetti()
+                jsConfetti.addConfetti()
+            }).catch(error=>{
+                console.error("Error loading CONFETTI", error)
+            })
+        }
     }
 
 }
