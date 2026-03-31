@@ -26,4 +26,16 @@ public without sharing class InvitationController {
         }
     }
 
+    //Get Invitation address By Id
+    @AuraEnabled(cacheable=true)
+    public static Invitation__c getInvitationAddress(String Id) {
+        try {
+            return [SELECT Id, Event_Address__c, Event_Map_URL__c, Contact_Number__c 
+            FROM Invitation__c
+            WHERE Id= : Id];
+        } catch(Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
 }

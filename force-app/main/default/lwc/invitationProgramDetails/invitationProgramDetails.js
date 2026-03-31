@@ -3,7 +3,7 @@ import getProgramDetailsByInvitationId from '@salesforce/apex/InvitationControll
 
 export default class InvitationProgramDetails extends LightningElement {
 
-    recordId = ''
+    recordId = 'a0CJ500000Vl2XtMAJ'
     programList = []
 
     @wire(getProgramDetailsByInvitationId, {Id:'$recordId'})
